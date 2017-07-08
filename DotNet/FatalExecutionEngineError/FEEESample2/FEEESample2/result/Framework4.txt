@@ -1,0 +1,73 @@
+﻿This dump file has an exception of interest stored in it.
+The stored exception information can be accessed via .ecxr.
+(2c3c.10c0): Access violation - code c0000005 (first/second chance not available)
+eax=eeeeeeee ebx=fffffffe ecx=11111111 edx=01191b24 esi=02ef30fc edi=02ef30fc
+eip=73ab493e esp=00efe4a4 ebp=00efe4c4 iopl=0         nv up ei ng nz na pe nc
+cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010286
+clr!WKS::gc_heap::mark_object_simple+0x60:
+73ab493e f70000000080    test    dword ptr [eax],80000000h ds:002b:eeeeeeee=????????
+
+0:000> .loadby sos.dll clr
+
+0:000> !DumpHeap -stat
+Could not request method table data for object 02EF30FC (MethodTable: EEEEEEEC).
+0:000> !VerifyHeap
+Could not request method table data for object 02EF30FC (MethodTable: EEEEEEEC).
+Last good object: 02EF30F0.
+Failed to request SyncBlk at index 1.
+
+0:000> !dd 02EF30FC 
+No export dd found
+0:000> dd 02EF30FC 
+02ef30fc  eeeeeeef 00000004 aaaaaaaa bbbbbbbb
+02ef310c  cccccccc dddddddd 00000000 72b91705
+02ef311c  00000000 00000000 00000000 00000000
+02ef312c  00000000 00000000 010d4d88 00000000
+02ef313c  00000000 00000000 00000000 00000000
+02ef314c  00000000 00000000 00000000 00000000
+02ef315c  00000000 00000000 00000000 00000000
+02ef316c  00000000 00000000 00000000 00000000
+
+0:000> kv
+ # ChildEBP RetAddr  Args to Child              
+00 00efe4c4 73ab3a25 00efe4e0 00000024 73ab47e0 clr!WKS::gc_heap::mark_object_simple+0x60 (FPO: [Non-Fpo])
+01 00efe4e4 73ab0932 00eff07c 00efeef0 00000000 clr!WKS::GCHeap::Promote+0xaa (FPO: [Non-Fpo])
+02 00efe4fc 73ab1a09 00efeec0 00eff07c 00000000 clr!GcEnumObject+0x37 (FPO: [Non-Fpo])
+03 00efe844 73ab0cfb 00efeb90 00efeae0 00000000 clr!EECodeManager::EnumGcRefs+0x7ce (FPO: [Non-Fpo])
+04 00efe898 73aa9c79 00efe8c0 00efeec0 73ab0c20 clr!GcStackCrawlCallBack+0x167 (FPO: [2,9,0])
+05 00efeb64 73aa9d7f 00efeb90 73ab0c20 00efeec0 clr!Thread::StackWalkFramesEx+0x92 (FPO: [5,172,0])
+06 00efee98 73ab0be0 73ab0c20 00efeec0 00000500 clr!Thread::StackWalkFrames+0x9d (FPO: [4,195,4])
+07 00efeed0 73ab45db 01188e48 00efeef0 7410b5c4 clr!GCToEEInterface::GcScanRoots+0x108 (FPO: [Non-Fpo])
+08 00efef30 73ab353f 7410b5c4 7410bb04 00000001 clr!WKS::gc_heap::mark_phase+0x184 (FPO: [Non-Fpo])
+09 00efef50 73ab392e 971194c0 7410b740 00000001 clr!WKS::gc_heap::gc1+0xa0 (FPO: [Non-Fpo])
+0a 00efef88 73ab36ce 00000002 00000002 00000002 clr!WKS::gc_heap::garbage_collect+0x501 (FPO: [Non-Fpo])
+0b 00efefb4 73b72a99 00000002 00000001 00efefec clr!WKS::GCHeap::GarbageCollectGeneration+0x1f6 (FPO: [2,5,4])
+0c 00efefc4 73b72af5 00000002 00000000 00000002 clr!WKS::GCHeap::GarbageCollectTry+0x56 (FPO: [Non-Fpo])
+0d 00efefec 73b763d6 ffffffff 00000000 00000002 clr!WKS::GCHeap::GarbageCollect+0xa0 (FPO: [Non-Fpo])
+0e 00eff038 731bc718 ffffffff 00000002 d597cef6 clr!GCInterface::Collect+0x69 (FPO: [Non-Fpo])
+0f 00eff070 011204ae 02ef30fc 02ef30fc 02ef3118 mscorlib_ni+0xaec718
+WARNING: Frame IP not in any known module. Following frames may be wrong.
+10 00eff088 73a9ea56 0118fab8 00eff0e8 73ab93ef 0x11204ae
+11 00eff094 73ab93ef 00eff12c 00eff0d8 73c424b0 clr!CallDescrWorkerInternal+0x34
+12 00eff0e8 73ab9673 00eff140 02ef30f0 00000000 clr!CallDescrWorkerWithHandler+0x6b (FPO: [Non-Fpo])
+13 00eff158 73bfb4a4 00eff24c 971189cc 010d4d24 clr!MethodDescCallSite::CallTargetWorker+0x16a (FPO: [Non-Fpo])
+14 00eff284 73bfb3e8 00eff2a8 00000000 971189d0 clr!RunMain+0x1ad (FPO: [Non-Fpo])
+15 00eff4f8 73bfba90 00000000 97118e40 00b10000 clr!Assembly::ExecuteMainMethod+0x124 (FPO: [1,149,0])
+16 00eff9f8 73bfbc49 97118118 00000000 00000000 clr!SystemDomain::ExecuteMainMethod+0x656 (FPO: [0,313,0])
+17 00effa50 73bfbb8f 971181d8 00000000 73bd1df0 clr!ExecuteEXE+0x4c (FPO: [Non-Fpo])
+18 00effa90 73bd1e0c 97118184 00000000 73bd1df0 clr!_CorExeMainInternal+0xdc (FPO: [Non-Fpo])
+19 00effacc 7419e55b 19ab54b6 7421dcc0 7419e4e0 clr!_CorExeMain+0x4d (FPO: [Non-Fpo])
+1a 00effb0c 7421dd65 7421dcc0 c2228e4d 00effb30 mscoreei!_CorExeMain+0x10e (FPO: [0,10,4])
+1b 00effb1c 742b62c4 00d7f000 742b62a0 303df4e9 mscoree!_CorExeMain_Exported+0xa5 (FPO: [Non-Fpo])
+1c 00effb30 77820fd9 00d7f000 df2109ca 00000000 kernel32!BaseThreadInitThunk+0x24 (FPO: [Non-Fpo])
+1d 00effb78 77820fa4 ffffffff 77842ef1 00000000 ntdll!__RtlUserThreadStart+0x2f (FPO: [SEH])
+1e 00effb88 00000000 7421dcc0 00d7f000 00000000 ntdll!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+0:000> !ClrStack
+OS Thread Id: 0x10c0 (0)
+Child SP       IP Call Site
+00eff04c 73ab493e [InlinedCallFrame: 00eff04c] System.GC._Collect(Int32, Int32)
+00eff048 731bc718 System.GC.Collect()
+00eff078 011204ae *** WARNING: Unable to verify checksum for FEEESample2.exe
+FEEESample2.Program.Main(System.String[]) [C:\Users\<user>\Source\Repos\Buggy\DotNet\FatalExecutionEngineError\FEEESample2\FEEESample2\Program.cs @ 13]
+00eff200 73a9ea56 [GCFrame: 00eff200] 
