@@ -1,0 +1,171 @@
+﻿イベントログ
+
+情報	2017/07/08 6:42:13	Windows Error Reporting	1001	なし
+	障害バケット 109021593156、種類 1
+	イベント名: APPCRASH
+	応答: 使用不可
+	Cab ID: 0
+
+	問題の署名:
+	P1: FEEESample1.exe
+	P2: 1.0.0.0
+	P3: 595fffe8
+	P4: mscorwks.dll
+	P5: 2.0.50727.8745
+	P6: 573d3066
+	P7: c0000005
+	P8: 000c9558
+	P9: 
+	P10: 
+
+	添付ファイル:
+	\\?\C:\ProgramData\Microsoft\Windows\WER\Temp\WER397B.tmp.WERInternalMetadata.xml
+	\\?\C:\ProgramData\Microsoft\Windows\WER\Temp\WER4582.tmp.mdmp
+
+	これらのファイルは次の場所にある可能性があります:
+	C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_FEEESample1.exe_ccc52d1a1e1ed9ddba25ee9d1c98d7e3467d0b4_00000000_65d8753c
+
+	分析記号: 
+	解決策を再確認中: 0
+	レポート ID: 199e611c-635d-11e7-9037-5882a890b611
+	レポートの状態: 8
+	ハッシュされたバケット: 66db2e127778a8310351730858adc271
+
+
+エラー	2017/07/08 6:41:58	Application Error	1000	(100)
+	障害が発生しているアプリケーション名: FEEESample1.exe、バージョン: 1.0.0.0、タイム スタンプ: 0x595fffe8
+	障害が発生しているモジュール名: mscorwks.dll、バージョン: 2.0.50727.8745、タイム スタンプ: 0x573d3066
+	例外コード: 0xc0000005
+	障害オフセット: 0x000c9558
+	障害が発生しているプロセス ID: 0x%9
+	障害が発生しているアプリケーションの開始時刻: 0x%10
+	障害が発生しているアプリケーション パス: %11
+	障害が発生しているモジュール パス: %12
+	レポート ID: %13
+	障害が発生しているパッケージの完全な名前: %14
+	障害が発生しているパッケージに関連するアプリケーション ID: %15
+
+
+エラー	2017/07/08 6:41:58	.NET Runtime	1023	なし
+	.NET Runtime version 2.0.50727.8745 - 致命的な実行エンジン エラーが発生しました (79F507E6) (80131506)
+
+
+
+
+(30cc.aac): Access violation - code c0000005 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+eax=0017777e ebx=02c38020 ecx=0017777e edx=0004bff0 esi=ffff8001 edi=ffff8001
+eip=78f99558 esp=00bdf0e0 ebp=00bdf0ec iopl=0         nv up ei ng nz na po nc
+cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010282
+mscorwks!WKS::gc_heap::update_brick_table+0x81:
+78f99558 66893453        mov     word ptr [ebx+edx*2],si  ds:002b:02cd0000=????
+
+0:000> kvn
+ # ChildEBP RetAddr  Args to Child              
+00 00bdf0ec 78f98a19 031f340c fffb4016 bedaf110 mscorwks!WKS::gc_heap::update_brick_table+0x81 (FPO: [Non-Fpo])
+01 00bdf184 78f98206 00000002 79437a58 00000001 mscorwks!WKS::gc_heap::plan_phase+0x360 (FPO: [Non-Fpo])
+02 00bdf1a4 78f9a814 00000000 00000001 79437b40 mscorwks!WKS::gc_heap::gc1+0x6e (FPO: [Non-Fpo])
+03 00bdf1b8 78f9838c 00000002 00000001 0112f3b0 mscorwks!WKS::gc_heap::garbage_collect+0x258 (FPO: [Non-Fpo])
+04 00bdf1e4 7901dd14 00000002 00000000 00bdf214 mscorwks!WKS::GCHeap::GarbageCollectGeneration+0x145 (FPO: [Non-Fpo])
+05 00bdf1f4 7901dd50 00000002 00000000 0112f3b0 mscorwks!WKS::GCHeap::GarbageCollectTry+0x22 (FPO: [Non-Fpo])
+06 00bdf214 7901dc1c ffffffff 00000000 00000000 mscorwks!WKS::GCHeap::GarbageCollect+0x67 (FPO: [Non-Fpo])
+07 00bdf2c0 02e883da 02e88309 031f354c 031f354c mscorwks!GCInterface::CollectGeneration+0xaa (FPO: [Non-Fpo])
+WARNING: Frame IP not in any known module. Following frames may be wrong.
+08 00bdf2e0 78ed1b6c 00bdf2f0 00bdf330 00bdf370 0x2e883da
+09 00bdf2f0 78ee854b 00bdf3c0 00000000 00bdf390 mscorwks!CallDescrWorker+0x33
+0a 00bdf370 78ef05eb 00bdf3c0 00000000 00bdf390 mscorwks!CallDescrWorkerWithHandler+0xa3 (FPO: [Non-Fpo])
+0b 00bdf4ac 78ef061e 0130c030 00bdf578 00bdf544 mscorwks!MethodDesc::CallDescr+0x19c (FPO: [Non-Fpo])
+0c 00bdf4c8 78ef063c 0130c030 00bdf578 00bdf544 mscorwks!MethodDesc::CallTargetWorker+0x1f (FPO: [Non-Fpo])
+0d 00bdf4e0 78fae86d 00bdf544 ba58df84 00000000 mscorwks!MethodDescCallSite::Call+0x1a (FPO: [Non-Fpo])
+0e 00bdf644 78fae78d 01303020 00000001 00bdf680 mscorwks!ClassLoader::RunMain+0x223 (FPO: [Non-Fpo])
+0f 00bdf8ac 78faecaa 00000000 ba58d4bc 00000001 mscorwks!Assembly::ExecuteMainMethod+0xa6 (FPO: [Non-Fpo])
+10 00bdfd7c 78faee94 00a40000 00000000 ba58d40c mscorwks!SystemDomain::ExecuteMainMethod+0x45e (FPO: [Non-Fpo])
+11 00bdfdcc 78faedc4 00a40000 ba58d7d4 00000000 mscorwks!ExecuteEXE+0x59 (FPO: [Non-Fpo])
+12 00bdfe14 7419e55b 5c7009a3 7421dcc0 7419e4e0 mscorwks!_CorExeMain+0x15c (FPO: [Non-Fpo])
+13 00bdfe50 7421dd65 7421dcc0 cb03f64b 00bdfe74 mscoreei!_CorExeMain+0x10e (FPO: [0,10,4])
+14 00bdfe60 742b62c4 00c82000 742b62a0 896d110a MSCOREE!_CorExeMain_Exported+0xa5 (FPO: [Non-Fpo])
+15 00bdfe74 77820fd9 00c82000 6baf4fb2 00000000 KERNEL32!BaseThreadInitThunk+0x24 (FPO: [Non-Fpo])
+16 00bdfebc 77820fa4 ffffffff 77842ee4 00000000 ntdll!__RtlUserThreadStart+0x2f (FPO: [SEH])
+17 00bdfecc 00000000 7421dcc0 00c82000 00000000 ntdll!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+0:000> .loadby sos.dll mscorwks
+0:000> !ClrStack
+OS Thread Id: 0xaac (0)
+ESP       EIP     
+00bdf270 78f99558 [HelperMethodFrame: 00bdf270] System.GC.nativeCollectGeneration(Int32, Int32)
+00bdf2c8 02e883da System.GC.Collect()
+00bdf2cc 02e88309 FEEESample1.Program.Main(System.String[])
+00bdf500 78ed1b6c [GCFrame: 00bdf500] 
+
+
+0:000> g
+ModLoad: 58d70000 58d78000   C:\Windows\Microsoft.NET\Framework\v2.0.50727\culture.dll
+(30cc.aac): Break instruction exception - code 80000003 (first chance)
+eax=00000001 ebx=00000000 ecx=00000001 edx=00bde9ac esi=00000000 edi=791207e6
+eip=76744962 esp=00bde50c ebp=00bde9b8 iopl=0         nv up ei pl nz na po nc
+cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000202
+KERNELBASE!DebugBreak+0x2:
+76744962 cc              int     3
+
+0:000> kvn
+ # ChildEBP RetAddr  Args to Child              
+00 00bde508 7911f27f 00bde9ac 78fe2637 ba58c078 KERNELBASE!DebugBreak+0x2 (FPO: [0,0,0])
+01 00bde9b8 7911f5b8 80131506 791207e6 00000000 mscorwks!EEPolicy::LogFatalError+0x2b5 (FPO: [Non-Fpo])
+02 00bde9d0 791207f1 80131506 791207e6 00000000 mscorwks!EEPolicy::HandleFatalError+0x4d (FPO: [Non-Fpo])
+03 00bde9f4 78fd1d2b 00bdea74 ba58c3e8 0112f3b0 mscorwks!CLRVectoredExceptionHandlerPhase3+0xbc (FPO: [Non-Fpo])
+04 00bdea28 78fd1bcd 00bdea74 ba58c39c 00bdec00 mscorwks!CLRVectoredExceptionHandlerPhase2+0x20 (FPO: [Non-Fpo])
+05 00bdea5c 78f52768 00bdea74 00004000 0112f3b0 mscorwks!CLRVectoredExceptionHandler+0x10a (FPO: [Non-Fpo])
+06 00bdea88 78f52965 00bdebb0 00bdf30c 00bdeb3c mscorwks!CPFH_RealFirstPassHandler+0x607 (FPO: [Non-Fpo])
+07 00bdeaac 77842d72 00bdebb0 00bdf30c 00bdec00 mscorwks!COMPlusFrameHandler+0x15a (FPO: [Non-Fpo])
+08 00bdead0 77842d44 00bdebb0 00bdf30c 00bdec00 ntdll!ExecuteHandler2+0x26
+09 00bdeb98 778308ef 00bdebb0 00bdec00 00bdebb0 ntdll!ExecuteHandler+0x24
+0a 00bdeb98 78f99558 00bdebb0 00bdec00 00bdebb0 ntdll!KiUserExceptionDispatcher+0xf (FPO: [2,0,0]) (CONTEXT @ 00bdec00)
+0b 00bdf0ec 78f98a19 031f340c fffb4016 bedaf110 mscorwks!WKS::gc_heap::update_brick_table+0x81 (FPO: [Non-Fpo])
+0c 00bdf184 78f98206 00000002 79437a58 00000001 mscorwks!WKS::gc_heap::plan_phase+0x360 (FPO: [Non-Fpo])
+0d 00bdf1a4 78f9a814 00000000 00000001 79437b40 mscorwks!WKS::gc_heap::gc1+0x6e (FPO: [Non-Fpo])
+0e 00bdf1b8 78f9838c 00000002 00000001 0112f3b0 mscorwks!WKS::gc_heap::garbage_collect+0x258 (FPO: [Non-Fpo])
+0f 00bdf1e4 7901dd14 00000002 00000000 00bdf214 mscorwks!WKS::GCHeap::GarbageCollectGeneration+0x145 (FPO: [Non-Fpo])
+10 00bdf1f4 7901dd50 00000002 00000000 0112f3b0 mscorwks!WKS::GCHeap::GarbageCollectTry+0x22 (FPO: [Non-Fpo])
+11 00bdf214 7901dc1c ffffffff 00000000 00000000 mscorwks!WKS::GCHeap::GarbageCollect+0x67 (FPO: [Non-Fpo])
+12 00bdf2c0 02e883da 02e88309 031f354c 031f354c mscorwks!GCInterface::CollectGeneration+0xaa (FPO: [Non-Fpo])
+WARNING: Frame IP not in any known module. Following frames may be wrong.
+13 00bdf2e0 78ed1b6c 00bdf2f0 00bdf330 00bdf370 0x2e883da
+14 00bdf2f0 78ee854b 00bdf3c0 00000000 00bdf390 mscorwks!CallDescrWorker+0x33
+15 00bdf370 78ef05eb 00bdf3c0 00000000 00bdf390 mscorwks!CallDescrWorkerWithHandler+0xa3 (FPO: [Non-Fpo])
+16 00bdf4ac 78ef061e 0130c030 00bdf578 00bdf544 mscorwks!MethodDesc::CallDescr+0x19c (FPO: [Non-Fpo])
+17 00bdf4c8 78ef063c 0130c030 00bdf578 00bdf544 mscorwks!MethodDesc::CallTargetWorker+0x1f (FPO: [Non-Fpo])
+18 00bdf4e0 78fae86d 00bdf544 ba58df84 00000000 mscorwks!MethodDescCallSite::Call+0x1a (FPO: [Non-Fpo])
+19 00bdf644 78fae78d 01303020 00000001 00bdf680 mscorwks!ClassLoader::RunMain+0x223 (FPO: [Non-Fpo])
+1a 00bdf8ac 78faecaa 00000000 ba58d4bc 00000001 mscorwks!Assembly::ExecuteMainMethod+0xa6 (FPO: [Non-Fpo])
+1b 00bdfd7c 78faee94 00a40000 00000000 ba58d40c mscorwks!SystemDomain::ExecuteMainMethod+0x45e (FPO: [Non-Fpo])
+1c 00bdfdcc 78faedc4 00a40000 ba58d7d4 00000000 mscorwks!ExecuteEXE+0x59 (FPO: [Non-Fpo])
+1d 00bdfe14 7419e55b 5c7009a3 7421dcc0 7419e4e0 mscorwks!_CorExeMain+0x15c (FPO: [Non-Fpo])
+1e 00bdfe50 7421dd65 7421dcc0 cb03f64b 00bdfe74 mscoreei!_CorExeMain+0x10e (FPO: [0,10,4])
+1f 00bdfe60 742b62c4 00c82000 742b62a0 896d110a MSCOREE!_CorExeMain_Exported+0xa5 (FPO: [Non-Fpo])
+20 00bdfe74 77820fd9 00c82000 6baf4fb2 00000000 KERNEL32!BaseThreadInitThunk+0x24 (FPO: [Non-Fpo])
+21 00bdfebc 77820fa4 ffffffff 77842ee4 00000000 ntdll!__RtlUserThreadStart+0x2f (FPO: [SEH])
+22 00bdfecc 00000000 7421dcc0 00c82000 00000000 ntdll!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+0:000> !ClrStack
+OS Thread Id: 0xaac (0)
+ESP       EIP     
+00bdf270 76744962 [HelperMethodFrame: 00bdf270] System.GC.nativeCollectGeneration(Int32, Int32)
+00bdf2c8 02e883da System.GC.Collect()
+00bdf2cc 02e88309 FEEESample1.Program.Main(System.String[])
+00bdf500 78ed1b6c [GCFrame: 00bdf500] 
+
+
+0:000> !VerifyHeap
+-verify will only produce output if there are errors in the heap
+The garbage collector data structures are not in a valid state for traversal.
+It is either in the "plan phase," where objects are being moved around, or
+we are at the initialization or shutdown of the gc heap. Commands related to 
+displaying, finding or traversing objects as well as gc heap segments may not 
+work properly. !dumpheap and !verifyheap may incorrectly complain of heap 
+consistency errors.
+object 031f183c: bad member 00000014 at 031f1840
+curr_object : 031f183c
+Last good object: 031f1814
+----------------
+

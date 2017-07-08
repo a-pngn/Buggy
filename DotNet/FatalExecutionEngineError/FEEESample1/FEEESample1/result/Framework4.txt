@@ -1,0 +1,186 @@
+﻿情報	2017/07/08 7:06:34	Windows Error Reporting	1001	なし
+	障害バケット 109021610878、種類 1
+	イベント名: APPCRASH
+	応答: 使用不可
+	Cab ID: 108111256533
+
+	問題の署名:
+	P1: FEEESample1.exe
+	P2: 1.0.0.0
+	P3: 596005df
+	P4: clr.dll
+	P5: 4.6.1648.0
+	P6: 58e3fbcf
+	P7: c0000005
+	P8: 00025e32
+	P9: 
+	P10: 
+
+	添付ファイル:
+	\\?\C:\ProgramData\Microsoft\Windows\WER\Temp\WERA76D.tmp.WERInternalMetadata.xml
+	\\?\C:\Users\<user>\AppData\Local\Temp\WERB345.tmp.appcompat.txt
+	\\?\C:\ProgramData\Microsoft\Windows\WER\Temp\WERB375.tmp.dmp
+	\\?\C:\Users\<user>\AppData\Local\Temp\WERB3F3.tmp.WERDataCollectionFailure.txt
+
+	これらのファイルは次の場所にある可能性があります:
+	C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_FEEESample1.exe_e28a87299d116b432aabb682ee53bf2ed3b2b8d7_e8924db1_cab_59c6bd75
+
+	分析記号: 
+	解決策を再確認中: 0
+	レポート ID: 7a121806-c37b-41a6-b548-2a1c4862ac2f
+	レポートの状態: 8
+	ハッシュされたバケット: 536ac9c7830ff1c29f5b6c220958a29c
+
+
+エラー	2017/07/08 7:06:28	Application Error	1000	(100)
+	障害が発生しているアプリケーション名: FEEESample1.exe、バージョン: 1.0.0.0、タイム スタンプ: 0x596005df
+	障害が発生しているモジュール名: clr.dll、バージョン: 4.6.1648.0、タイム スタンプ: 0x58e3fbcf
+	例外コード: 0xc0000005
+	障害オフセット: 0x00025e32
+	障害が発生しているプロセス ID: 0x28fc
+	障害が発生しているアプリケーションの開始時刻: 0x01d2f76d47f6bd80
+	障害が発生しているアプリケーション パス: C:\Users\<user>\Source\Repos\Buggy\DotNet\FatalExecutionEngineError\FEEESample1\FEEESample1\bin\Debug\FEEESample1.exe
+	障害が発生しているモジュール パス: C:\Windows\Microsoft.NET\Framework\v4.0.30319\clr.dll
+	レポート ID: 7a121806-c37b-41a6-b548-2a1c4862ac2f
+	障害が発生しているパッケージの完全な名前: 
+	障害が発生しているパッケージに関連するアプリケーション ID: 
+
+
+エラー	2017/07/08 7:06:27	.NET Runtime	1023	なし
+	アプリケーション:FEEESample1.exe
+	フレームワークのバージョン:v4.0.30319
+	説明: .NET ランタイムの内部エラーのため、プロセスが中止されました IP 73AB5E32 (73A90000)、終了コード 80131506。
+
+
+
+
+This dump file has an exception of interest stored in it.
+The stored exception information can be accessed via .ecxr.
+(28fc.27c8): Access violation - code c0000005 (first/second chance not available)
+eax=ffffb816 ebx=0017777d ecx=000047f0 edx=01378020 esi=ffffffff edi=ffffb816
+eip=73ab5e32 esp=00bdef50 ebp=00bdef60 iopl=0         nv up ei ng nz na po nc
+cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010282
+clr!WKS::gc_heap::update_brick_table+0x8e:
+73ab5e32 6689044a        mov     word ptr [edx+ecx*2],ax  ds:002b:01381000=????
+
+0:000> kvn
+ # ChildEBP RetAddr  Args to Child              
+00 00bdef60 73ab4ad0 bbbbecc0 be83ecc0 7410b5c4 clr!WKS::gc_heap::update_brick_table+0x8e (FPO: [Non-Fpo])
+01 00bdf110 73ab354d 7410b5c4 7410bb04 00000001 clr!WKS::gc_heap::plan_phase+0x644 (FPO: [Non-Fpo])
+02 00bdf130 73ab392e 2657ffee 7410b740 00000001 clr!WKS::gc_heap::gc1+0xae (FPO: [Non-Fpo])
+03 00bdf168 73ab36ce 00000002 00000002 00000002 clr!WKS::gc_heap::garbage_collect+0x501 (FPO: [Non-Fpo])
+04 00bdf194 73b72a99 00000002 00000001 00bdf1cc clr!WKS::GCHeap::GarbageCollectGeneration+0x1f6 (FPO: [2,5,4])
+05 00bdf1a4 73b72af5 00000002 00000000 00000002 clr!WKS::GCHeap::GarbageCollectTry+0x56 (FPO: [Non-Fpo])
+06 00bdf1cc 73b763d6 ffffffff 00000000 00000002 clr!WKS::GCHeap::GarbageCollect+0xa0 (FPO: [Non-Fpo])
+07 00bdf218 731bc718 ffffffff 00000002 64a0abff clr!GCInterface::Collect+0x69 (FPO: [Non-Fpo])
+08 00bdf250 014104ae 02c830fc 02c830fc 02c83118 mscorlib_ni+0xaec718
+WARNING: Frame IP not in any known module. Following frames may be wrong.
+09 00bdf268 73a9ea56 00f56e60 00bdf2c8 73ab93ef 0x14104ae
+0a 00bdf274 73ab93ef 00bdf30c 00bdf2b8 73c424b0 clr!CallDescrWorkerInternal+0x34
+0b 00bdf2c8 73ab9673 00bdf320 02c830f0 00000000 clr!CallDescrWorkerWithHandler+0x6b (FPO: [Non-Fpo])
+0c 00bdf338 73bfb4a4 00bdf42c 2657fae2 012d4d24 clr!MethodDescCallSite::CallTargetWorker+0x16a (FPO: [Non-Fpo])
+0d 00bdf464 73bfb3e8 00bdf488 00000000 2657fafe clr!RunMain+0x1ad (FPO: [Non-Fpo])
+0e 00bdf6d8 73bfba90 00000000 2657f86e 00a40000 clr!Assembly::ExecuteMainMethod+0x124 (FPO: [1,149,0])
+0f 00bdfbd8 73bfbc49 2657f2b6 00000000 00000000 clr!SystemDomain::ExecuteMainMethod+0x656 (FPO: [0,313,0])
+10 00bdfc30 73bfbb8f 2657f2f6 00000000 73bd1df0 clr!ExecuteEXE+0x4c (FPO: [Non-Fpo])
+11 00bdfc70 73bd1e0c 2657f22a 00000000 73bd1df0 clr!_CorExeMainInternal+0xdc (FPO: [Non-Fpo])
+12 00bdfcac 7419e55b d6cf5d6b 7421dcc0 7419e4e0 clr!_CorExeMain+0x4d (FPO: [Non-Fpo])
+13 00bdfce8 7421dd65 7421dcc0 743602c3 00bdfd0c mscoreei!_CorExeMain+0x10e (FPO: [0,10,4])
+14 00bdfcf8 742b62c4 00da6000 742b62a0 a6cebcb8 mscoree!_CorExeMain_Exported+0xa5 (FPO: [Non-Fpo])
+15 00bdfd0c 77820fd9 00da6000 3030354a 00000000 kernel32!BaseThreadInitThunk+0x24 (FPO: [Non-Fpo])
+16 00bdfd54 77820fa4 ffffffff 77842ee2 00000000 ntdll!__RtlUserThreadStart+0x2f (FPO: [SEH])
+17 00bdfd64 00000000 7421dcc0 00da6000 00000000 ntdll!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+0:000> .loadby sos.dll clr
+0:000> !ClrStack
+OS Thread Id: 0x27c8 (0)
+Child SP       IP Call Site
+00bdf22c 73ab5e32 [InlinedCallFrame: 00bdf22c] System.GC._Collect(Int32, Int32)
+00bdf228 731bc718 System.GC.Collect()
+00bdf258 014104ae *** WARNING: Unable to verify checksum for FEEESample1.exe
+FEEESample1.Program.Main(System.String[]) [C:\Users\<user>\Source\Repos\Buggy\DotNet\FatalExecutionEngineError\FEEESample1\FEEESample1\Program.cs @ 11]
+00bdf3e0 73a9ea56 [GCFrame: 00bdf3e0] 
+
+0:000> !pe
+Exception object: 02c81120
+Exception type:   System.ExecutionEngineException
+Message:          <none>
+InnerException:   <none>
+StackTrace (generated):
+<none>
+StackTraceString: <none>
+HResult: 80131506
+
+0:000> !VerifyHeap
+Could not request method table data for object 02C81228 (MethodTable: 0000000C).
+Last good object: 02C8121C.
+object 03c81020: bad member 02C81228 at 03C81070
+Last good object: 03C81010.
+object 03c822b8: bad member 02C81228 at 03C822C0
+Last good object: 03C822A8.
+
+0:000> !do 02C81228 
+<Note: this object has an invalid CLASS field>
+Invalid object
+
+
+
+
+
+
+0:000> .loadby sos.dll clr
+0:000> !DumpHeap -stat
+Statistics:
+      MT    Count    TotalSize Class Name
+72b953f4        1           12 System.Reflection.Missing
+...
+72b96fc0        1           28 System.UInt32[]
+...
+Total 208 objects
+
+0:000> !DumpHeap /d -mt 72b96fc0
+ Address       MT     Size
+031230fc 72b96fc0       28     
+
+Statistics:
+      MT    Count    TotalSize Class Name
+72b96fc0        1           28 System.UInt32[]
+Total 1 objects
+0:000> !DumpObj /d 031230fc
+Name:        System.UInt32[]
+MethodTable: 72b96fc0
+EEClass:     72768a48
+Size:        28(0x1c) bytes
+Array:       Rank 1, Number of elements 4, Type UInt32 (Print Array)
+Fields:
+None
+0:000> dd 031230fc
+031230fc  72b96fc0 00000004 aaaaaaaa bbbbbbbb
+0312310c  cccccccc dddddddd 00000000 72b91704
+0312311c  00000000 00000000 00000000 00000000
+0312312c  00000000 00000000 01594d88 00000000
+0312313c  72ba140c 00000002 00000000 72ba140c
+0312314c  00000001 00000000 72ba8990 00000000
+0312315c  03123310 00000000 00000018 00000008
+0312316c  00000001 00000006 00000000 72ba8a20
+
+0:000> g
+0:000> dd 031230fc
+031230fc  72b96fc0 eeeeeeee aaaaaaaa bbbbbbbb
+0312310c  cccccccc dddddddd 00000000 72b91705
+0312311c  00000000 00000000 00000000 00000000
+0312312c  00000000 00000000 01594d88 00000000
+0312313c  72ba140c 00000002 00000000 72ba140d
+0312314c  00000001 00000000 72ba8991 00000000
+0312315c  03123310 00000000 00000018 00000008
+0312316c  00000001 00000006 00000000 72ba8a21
+
+0:000> g
+(2bb8.2318): Access violation - code c0000005 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+eax=ffffb816 ebx=0017777d ecx=000047f0 edx=02f48020 esi=ffffffff edi=ffffb816
+eip=73ab5e32 esp=010ff0a0 ebp=010ff0b0 iopl=0         nv up ei ng nz na po nc
+cs=0023  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010282
+clr!WKS::gc_heap::update_brick_table+0x8e:
+73ab5e32 6689044a        mov     word ptr [edx+ecx*2],ax  ds:002b:02f51000=????
